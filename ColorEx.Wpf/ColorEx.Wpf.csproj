@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<UseWPF>true</UseWPF>
+	<TargetFramework>net6.0-windows</TargetFramework>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<Title>Provides a set of extension methods for System.Media.Color class to</Title>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<RepositoryUrl>https://github.com/IgorTimofeev/ColorEx</RepositoryUrl>
+	<PackageTags>color;rgb;hsb;conversion</PackageTags>
+	<Authors>Igor Timofeev</Authors>
+	<Company>Igor Timofeev</Company>
+	<PackageProjectUrl>https://github.com/IgorTimofeev/ColorEx</PackageProjectUrl>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<AssemblyVersion>1.0.1.0</AssemblyVersion>
+	<FileVersion>1.0.1.0</FileVersion>
+	<Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ColorEx\ColorEx.csproj" />
+  </ItemGroup>
+</Project>
