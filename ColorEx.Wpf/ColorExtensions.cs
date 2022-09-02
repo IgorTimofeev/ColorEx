@@ -3,7 +3,7 @@
 namespace ColorEx.Wpf;
 
 public static class ColorExtensions {
-	internal static Color FromArgb(in double alpha, in double red, in double green, in double blue) {
+	public static Color FromArgb(in double alpha, in double red, in double green, in double blue) {
 		return Color.FromArgb(
 			(byte) (alpha * 255),
 			(byte) (red * 255),
@@ -11,9 +11,17 @@ public static class ColorExtensions {
 			(byte) (blue * 255)
 		);
 	}
+	
+	public static void ToRgb(this Color color, out double red, out double green, out double blue) {
+		red = color.R / 255d;
+		green = color.G / 255d;
+		blue = color.B / 255;
+	}
 
-	public static uint ToUint(this Color color) {
-		return Rgb.ToUint(color.A, color.R, color.G, color.B);
+	public static void ToArgb(this Color color, out double alpha, out double red, out double green, out double blue) {
+		alpha = color.A / 255d;
+
+		color.ToRgb(out red, out green, out blue);
 	}
 
 	public static Color FromHsb(in double hue, in double saturation, in double brightness, byte alpha = 0xFF) {
@@ -23,14 +31,20 @@ public static class ColorExtensions {
 	}
 
 	public static void ToHsb(this Color color, out double hue, out double saturation, out double brightness) {
+		color.ToRgb(out var red, out var green, out var blue);
+
 		Hsb.FromRgb(
-			color.R / 255d,
-			color.G / 255d,
-			color.B / 255,
+			red,
+			green,
+			blue,
 			out hue,
 			out saturation,
 			out brightness
 		);
+	}
+
+	public static uint ToUint(this Color color) {
+		return Rgb.ToUint(color.A, color.R, color.G, color.B);
 	}
 
 	public static Color ToColor(this uint color) {
@@ -60,11 +74,11 @@ public static class ColorExtensions {
 		return FromArgb(alpha, in red, in green, in blue);
 	}
 
-	public static Color ParametricHueToColor(in double hue, in double minHue, in double maxHue, in double saturation, in double brightness, byte alpha = 0xFF) {
-		Hsb.ParametricHueToRgb(
+	public static Color InterpolateHueToColor(in double minHue, in double maxHue, in double hueFactor, in double saturation, in double brightness, byte alpha = 0xFF) {
+		Hsb.InterpolateHueToRgb(
 			in minHue,
 			in maxHue,
-			in hue,
+			in hueFactor,
 			in saturation,
 			in brightness,
 			out var red,
@@ -75,13 +89,35 @@ public static class ColorExtensions {
 		return FromArgb(alpha, in red, in green, in blue);
 	}
 
-	public static Color Multiply(this Color source, in double multiplier) {
-		return Color.FromArgb(
-			source.A,
-			(byte) Math.Min(source.R * multiplier, 0xFF),
-			(byte) Math.Min(source.G * multiplier, 0xFF),
-			(byte) Math.Min(source.B * multiplier, 0xFF)
-		);
+	public static Color Multiply(this Color color, in double factor) {
+		byte
+			red = color.R,
+			green = color.G,
+			blue = color.B;
+
+		Rgb.Multiply(ref red, ref green, ref blue, in factor);
+
+		return Color.FromArgb(color.A, red, green, blue);
+	}
+
+	public static Color Desaturate(this Color color, in double factor) {
+		byte
+			red = color.R,
+			green = color.G,
+			blue = color.B;
+
+		Rgb.Desaturate(ref red, ref green, ref blue, in factor);
+
+		return Color.FromArgb(color.A, red, green, blue);
+	}
+
+	public static byte Average(this Color color) {
+		byte
+			red = color.R,
+			green = color.G,
+			blue = color.B;
+
+		return Rgb.Average(ref red, ref green, ref blue);
 	}
 
 	public static Color ToNewColorWithDiferentAlpha(this Color color, in byte newAlpha) {

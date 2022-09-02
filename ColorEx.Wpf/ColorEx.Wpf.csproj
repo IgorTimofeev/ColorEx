@@ -6,17 +6,18 @@
 	<UseWPF>true</UseWPF>
 	<TargetFramework>net6.0-windows</TargetFramework>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	<Title>Provides a set of extension methods for System.Media.Color class to</Title>
+	<Title>ColorEx.Wpf</Title>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<RepositoryUrl>https://github.com/IgorTimofeev/ColorEx</RepositoryUrl>
-	<PackageTags>color;rgb;hsb;conversion</PackageTags>
+	<PackageTags>color;effects;processing;rgb;hsb;conversion</PackageTags>
 	<Authors>Igor Timofeev</Authors>
 	<Company>Igor Timofeev</Company>
 	<PackageProjectUrl>https://github.com/IgorTimofeev/ColorEx</PackageProjectUrl>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	<AssemblyVersion>1.0.1.0</AssemblyVersion>
 	<FileVersion>1.0.1.0</FileVersion>
-	<Version>1.0.2</Version>
+	<Version>1.0.3</Version>
+	<Description>Provides a set of extension methods for System.Media.Color class like linear interpolation, multiplication, average calculation, RGB/HSV and Color/Uint conversion, etc.</Description>
   </PropertyGroup>
 
   <ItemGroup>

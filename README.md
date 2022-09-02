@@ -1,2 +1,2 @@
 # ColorEx
-Library for manipulating color channels and converting from one color model to another
+Highly optimized library for color channels processing, RGB/HSB models conversion and applying basic effects

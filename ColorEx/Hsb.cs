@@ -15,9 +15,7 @@ public static class Hsb {
 	/// <param name="blue">Output <paramref name="blue"/> channel value in range [0.0; 1.0]</param>
 	/// <exception cref="ArgumentException"><inheritdoc cref="Rgb.IsBright(in double, in double, in double)"/></exception>
 	public static void ToRgb(in double hue, in double saturation, in double brightness, out double red, out double green, out double blue) {
-		Assert.IsValueInRange0_1(hue, "Hue");
-		Assert.IsValueInRange0_1(saturation, "Saturation");
-		Assert.IsValueInRange0_1(brightness, "Brightness");
+		Assert.IsHsbValuesInRange0_1(in hue, in saturation, in brightness);
 
 		double hueSector = hue * 6;
 		int hueSectorIntegerPart = (int) hueSector;
@@ -76,9 +74,7 @@ public static class Hsb {
 	/// <param name="brightness">Output <paramref name="brightness"/> value in range [0.0; 1.0]</param>
 	/// <exception cref="ArgumentException"><inheritdoc cref="Rgb.IsBright(in double, in double, in double)"/></exception>
 	public static void FromRgb(in double red, in double green, in double blue, out double hue, out double saturation, out double brightness) {
-		Assert.IsValueInRange0_1(red, "Red");
-		Assert.IsValueInRange0_1(green, "Green");
-		Assert.IsValueInRange0_1(blue, "Blue");
+		Assert.IsRgbValuesInRange0_1(in red, in green, in blue);
 
 		hue = 0;
 
@@ -131,9 +127,9 @@ public static class Hsb {
 		ToRgb(random.NextDouble(), in saturation, in brightness, out red, out green, out blue);
 	}
 
-	public static void ParametricHueToRgb(in double minHue, in double maxHue, in double hue, in double saturation, in double brightness, out double red, out double green, out double blue) {
-		Assert.IsValueInRange0_1(hue, "Value");
+	public static void InterpolateHueToRgb(in double minHue, in double maxHue, in double hueFactor, in double saturation, in double brightness, out double red, out double green, out double blue) {
+		Assert.IsValueInRange0_1(hueFactor, "hueFactor");
 
-		ToRgb(minHue + hue * (maxHue - minHue), in saturation, in brightness, out red, out green, out blue);
+		ToRgb(minHue + hueFactor * (maxHue - minHue), in saturation, in brightness, out red, out green, out blue);
 	}
 }
