@@ -3,7 +3,7 @@
 namespace ColorEx;
 
 /// <summary>
-/// Provides many auxiliary methods for manipulating color channels, as well as converting colors from one model to another
+/// Provides methods for conversion between RGB and HSB color models
 /// </summary>
 public static class Hsb {
 	/// <summary>Converts HSB color model values to RGB values</summary>
@@ -136,5 +136,4 @@ public static class Hsb {
 
 		ToRgb(minHue + hue * (maxHue - minHue), in saturation, in brightness, out red, out green, out blue);
 	}
-
 }

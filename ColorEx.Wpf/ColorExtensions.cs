@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace ColorEx.WPF;
+namespace ColorEx.Wpf;
 
 public static class ColorExtensions {
 	internal static Color FromArgb(in double alpha, in double red, in double green, in double blue) {

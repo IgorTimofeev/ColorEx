@@ -1,7 +1,7 @@
 ﻿namespace ColorEx;
 
 /// <summary>
-/// Provides many auxiliary methods for manipulating color channels, as well as converting colors from one model to another
+/// Provides auxiliary methods for manipulating color channels in RGB color model
 /// </summary>
 public static class Rgb {
 	#region IsBright
