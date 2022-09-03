@@ -94,25 +94,26 @@ public static class Hsb {
 
 		saturation = brightness == 0 ? 0 : delta / brightness;
 
-		if (saturation != 0) {
-			// Determining hue sector
-			if (red == brightness) {
-				hue = (green - blue) / delta;
-			}
-			else if (green == brightness) {
-				hue = 2 + (blue - red) / delta;
-			}
-			else if (blue == brightness) {
-				hue = 4 + (red - green) / delta;
-			}
+		if (saturation == 0)
+			return;
 
-			// Sector to hue
-			hue *= 1d / 6d;
-
-			// For cases like R = MAX & B > G
-			if (hue < 0)
-				hue += 1d;
+		// Determining hue sector
+		if (red == brightness) {
+			hue = (green - blue) / delta;
 		}
+		else if (green == brightness) {
+			hue = 2 + (blue - red) / delta;
+		}
+		else if (blue == brightness) {
+			hue = 4 + (red - green) / delta;
+		}
+
+		// Sector to hue
+		hue *= 1d / 6d;
+
+		// For cases like R = MAX & B > G
+		if (hue < 0)
+			hue += 1d;
 	}
 
 	/// <summary>Generates a color in HSB model with random <see langword="hue"/> and converts it to RGB values in range [0.0; 1.0]</summary>

@@ -30,18 +30,25 @@ public static class Rgb {
 		return red * 0.2126 + green * 0.7152 + blue * 0.0722 > 127.5;
 	}
 
-	/// <summary>Tests if a source color is bright in terms of human perception and fills output channels with black or white values</summary>
+	/// <summary>Tests if a color is bright in terms of human perception and sets it's channels values with new one</summary>
 	/// <param name="red"><inheritdoc cref="IsBright(in double, in double, in double)" path="/param[@name='red']"/></param>
 	/// <param name="green"><inheritdoc cref="IsBright(in double, in double, in double)" path="/param[@name='green']"/></param>
 	/// <param name="blue"><inheritdoc cref="IsBright(in double, in double, in double)" path="/param[@name='blue']"/></param>
+	/// <param name="valueIfBright">New channel values in range [0.0; 1.0] if color is bright</param>
+	/// <param name="valueIfNotBright">New channel values in range [0.0; 1.0] if color is not bright</param>
 	/// <exception cref="ArgumentException"><inheritdoc cref="IsBright(in double, in double, in double)"/></exception>
-	public static void ToBlackIfBright(ref double red, ref double green, ref double blue) {
-		if (IsBright(in red, in green, in blue)) {
-			red = green = blue = 0x00;
-		}
-		else {
-			red = green = blue = 0xFF;
-		}
+	public static void ToNewValuesIfBright(ref double red, ref double green, ref double blue, in double valueIfBright = 0, in double valueIfNotBright = 1) {
+		red = green = blue = IsBright(in red, in green, in blue) ? valueIfBright : valueIfNotBright;
+	}
+
+	/// <summary><inheritdoc cref="ToNewValuesIfBright(ref double, ref double, ref double, in double, in double)"/></summary>
+	/// <param name="red"><inheritdoc cref="IsBright(in byte, in byte, in byte)" path="/param[@name='red']"/></param>
+	/// <param name="green"><inheritdoc cref="IsBright(in byte, in byte, in byte)" path="/param[@name='green']"/></param>
+	/// <param name="blue"><inheritdoc cref="IsBright(in byte, in byte, in byte)" path="/param[@name='blue']"/></param>
+	/// <param name="valueIfBright">New channel values if color is bright</param>
+	/// <param name="valueIfNotBright">New channel values if color is not bright</param>
+	public static void ToNewValuesIfBright(ref byte red, ref byte green, ref byte blue, in byte valueIfBright = 0, in byte valueIfNotBright = 0xFF) {
+		red = green = blue = IsBright(in red, in green, in blue) ? valueIfBright : valueIfNotBright;
 	}
 
 	#endregion
