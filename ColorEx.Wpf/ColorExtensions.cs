@@ -24,10 +24,10 @@ public static class ColorExtensions {
 		color.ToRgb(out red, out green, out blue);
 	}
 
-	public static Color FromHsb(in double hue, in double saturation, in double brightness, byte alpha = 0xFF) {
+	public static Color FromHsb(in double hue, in double saturation, in double brightness, double alpha = 1) {
 		Hsb.ToRgb(in hue, in saturation, in brightness, out var red, out var green, out var blue);
 
-		return FromArgb(alpha, red, green, blue);
+		return FromArgb(in alpha, in red, in green, in blue);
 	}
 
 	public static void ToHsb(this Color color, out double hue, out double saturation, out double brightness) {
@@ -61,7 +61,7 @@ public static class ColorExtensions {
 		return color.IsBright() ? Colors.Black : Colors.White;
 	}
 
-	public static Color NextHSBColor(this Random random, in double saturation, in double brightness, byte alpha = 0xFF) {
+	public static Color NextHSBColor(this Random random, in double saturation, in double brightness, in double alpha = 1) {
 		Hsb.RandomHueToRgb(
 			random,
 			in saturation,
@@ -71,10 +71,10 @@ public static class ColorExtensions {
 			out var blue
 		);
 
-		return FromArgb(alpha, in red, in green, in blue);
+		return FromArgb(in alpha, in red, in green, in blue);
 	}
 
-	public static Color InterpolateHueToColor(in double minHue, in double maxHue, in double hueFactor, in double saturation, in double brightness, byte alpha = 0xFF) {
+	public static Color InterpolateHueToColor(in double minHue, in double maxHue, in double hueFactor, in double saturation, in double brightness, in double alpha = 1) {
 		Hsb.InterpolateHueToRgb(
 			in minHue,
 			in maxHue,
@@ -86,7 +86,7 @@ public static class ColorExtensions {
 			out var blue
 		);
 
-		return FromArgb(alpha, in red, in green, in blue);
+		return FromArgb(in alpha, in red, in green, in blue);
 	}
 
 	public static Color Multiply(this Color color, in double factor) {
