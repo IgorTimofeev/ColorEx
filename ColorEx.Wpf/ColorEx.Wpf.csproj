@@ -18,6 +18,7 @@
 	<FileVersion>1.0.1.0</FileVersion>
 	<Version>1.0.5</Version>
 	<Description>Provides a set of extension methods for System.Media.Color class like linear interpolation, multiplication, average calculation, RGB/HSV and Color/Uint conversion, etc.</Description>
+	<Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

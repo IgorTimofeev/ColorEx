@@ -128,9 +128,9 @@ public static class Hsb {
 		ToRgb(random.NextDouble(), in saturation, in brightness, out red, out green, out blue);
 	}
 
-	public static void InterpolateHueToRgb(in double minHue, in double maxHue, in double hueFactor, in double saturation, in double brightness, out double red, out double green, out double blue) {
+	public static void InterpolateHueToRgb(in double hueMin, in double hueMax, in double hueFactor, in double saturation, in double brightness, out double red, out double green, out double blue) {
 		Assert.IsValueInRange0_1(hueFactor, "hueFactor");
 
-		ToRgb(minHue + hueFactor * (maxHue - minHue), in saturation, in brightness, out red, out green, out blue);
+		ToRgb(hueMin + hueFactor * (hueMax - hueMin), in saturation, in brightness, out red, out green, out blue);
 	}
 }

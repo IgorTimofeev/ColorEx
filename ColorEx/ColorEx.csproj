@@ -15,6 +15,7 @@
     <FileVersion>1.0.1.0</FileVersion>
     <Version>1.0.5</Version>
     <Description>Highly optimized library for color channels processing, RGB/HSB models conversion and applying basic effects</Description>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
