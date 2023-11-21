@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+﻿using ColorEx.Internal;
 
 namespace ColorEx;
 
@@ -15,7 +15,7 @@ public static class Hsb {
 	/// <param name="blue">Output <paramref name="blue"/> channel value in range [0.0; 1.0]</param>
 	/// <exception cref="ArgumentException"><inheritdoc cref="Rgb.IsBright(in double, in double, in double)"/></exception>
 	public static void ToRgb(in double hue, in double saturation, in double brightness, out double red, out double green, out double blue) {
-		Assert.IsHsbValuesInRange0_1(in hue, in saturation, in brightness);
+		Assert.AreHsbValuesValid(in hue, in saturation, in brightness);
 
 		double hueSector = hue * 6;
 		int hueSectorIntegerPart = (int) hueSector;
@@ -74,7 +74,7 @@ public static class Hsb {
 	/// <param name="brightness">Output <paramref name="brightness"/> value in range [0.0; 1.0]</param>
 	/// <exception cref="ArgumentException"><inheritdoc cref="Rgb.IsBright(in double, in double, in double)"/></exception>
 	public static void FromRgb(in double red, in double green, in double blue, out double hue, out double saturation, out double brightness) {
-		Assert.IsRgbValuesInRange0_1(in red, in green, in blue);
+		Assert.AreRgbValuesValid(in red, in green, in blue);
 
 		hue = 0;
 

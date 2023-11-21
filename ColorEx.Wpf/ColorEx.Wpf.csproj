@@ -4,7 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<UseWPF>true</UseWPF>
-	<TargetFramework>net6.0-windows</TargetFramework>
+	<TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<Title>ColorEx.Wpf</Title>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -16,9 +16,11 @@
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	<AssemblyVersion>1.0.1.0</AssemblyVersion>
 	<FileVersion>1.0.1.0</FileVersion>
-	<Version>1.0.5</Version>
+	<Version>1.0.6</Version>
 	<Description>Provides a set of extension methods for System.Media.Color class like linear interpolation, multiplication, average calculation, RGB/HSV and Color/Uint conversion, etc.</Description>
 	<Platforms>AnyCPU;x64</Platforms>
+	<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

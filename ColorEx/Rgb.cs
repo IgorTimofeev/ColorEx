@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using ColorEx.Internal;
+using System.Drawing;
 using System.Threading;
 
 namespace ColorEx;
@@ -16,7 +17,7 @@ public static class Rgb {
 	/// <returns><see langword="true"/> if color is bright and <see langword="false"/> otherwise</returns>
 	/// <exception cref="ArgumentException">Thrown when any input parameter is out of range [0.0; 1.0]</exception>
 	public static bool IsBright(in double red, in double green, in double blue) {
-		Assert.IsRgbValuesInRange0_1(in red, in green, in blue);
+		Assert.AreRgbValuesValid(in red, in green, in blue);
 
 		return red * 0.2126 + green * 0.7152 + blue * 0.0722 > 0.5;
 	}
@@ -65,7 +66,7 @@ public static class Rgb {
 	/// <param name="factor">Multiplication factor for each channel. Negative value will throw an <see cref="ArgumentException"/>.</param>
 	/// <exception cref="ArgumentException"><inheritdoc cref="IsBright(in double, in double, in double)"/></exception>
 	public static void Multiply(ref double red, ref double green, ref double blue, in double factor) {
-		Assert.IsRgbValuesInRange0_1(in red, in green, in blue);
+		Assert.AreRgbValuesValid(in red, in green, in blue);
 		
 		if ((red *= factor) > 1)
 			red = 1;
@@ -99,7 +100,7 @@ public static class Rgb {
 	/// <returns>An average value for color channels in range [0.0; 1.0].</returns>
 	/// <exception cref="ArgumentException"><inheritdoc cref="IsBright(in double, in double, in double)"/></exception>
 	public static double Average(ref double red, ref double green, ref double blue) {
-		Assert.IsRgbValuesInRange0_1(in red, in green, in blue);
+		Assert.AreRgbValuesValid(in red, in green, in blue);
 
 		return (red + green + blue) / 3;
 	}
@@ -144,8 +145,8 @@ public static class Rgb {
 	/// <param name="factor">Interpolation factor for each channel in range [0.0; 1.0]. Value out of range will throw an <see cref="ArgumentException"/>.</param>
 	/// <exception cref="ArgumentException"><inheritdoc cref="IsBright(in double, in double, in double)"/></exception>
 	public static void Interpolate(ref double fromRed, ref double fromGreen, ref double fromBlue, in double toRed, in double toGreen, in double toBlue, in double factor) {
-		Assert.IsRgbValuesInRange0_1(in fromRed, in fromGreen, in fromBlue);
-		Assert.IsRgbValuesInRange0_1(in toRed, in toGreen, in toBlue);
+		Assert.AreRgbValuesValid(in fromRed, in fromGreen, in fromBlue);
+		Assert.AreRgbValuesValid(in toRed, in toGreen, in toBlue);
 		Assert.IsValueInRange0_1(in factor, "factor");
 
 		// Factor with value 0 is ignored
@@ -212,7 +213,7 @@ public static class Rgb {
 	/// <param name="factor"><inheritdoc cref="Interpolate(ref double, ref double, ref double, in double, in double, in double, in double)"  path="/param[@name='factor']"/></param>
 	/// <exception cref="ArgumentException"><inheritdoc cref="IsBright(in double, in double, in double)"/></exception>
 	public static void Desaturate(ref double red, ref double green, ref double blue, in double factor = 1) {
-		Assert.IsRgbValuesInRange0_1(in red, in green, in blue);
+		Assert.AreRgbValuesValid(in red, in green, in blue);
 		Assert.IsValueInRange0_1(in factor, "factor");
 
 		// "Magical" constants mean "best" desaturation result for human perception
@@ -315,7 +316,7 @@ public static class Rgb {
 	/// <exception cref="ArgumentException"><inheritdoc cref="IsBright(in double, in double, in double)"/></exception>
 	public static uint ToUint(in double alpha, in double red, in double green, in double blue) {
 		Assert.IsValueInRange0_1(alpha, "alpha");
-		Assert.IsRgbValuesInRange0_1(in red, in green, in blue);
+		Assert.AreRgbValuesValid(in red, in green, in blue);
 		
 		return ToUint(
 			(byte) (alpha * 0xFF),
