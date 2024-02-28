@@ -5,7 +5,7 @@ using System.Windows.Media;
 namespace ColorEx.Wpf;
 
 public static class ColorExtensions {
-	// ----------------------------------- Rrb -----------------------------------
+	// ----------------------------------- Rgb -----------------------------------
 
 	public static Color FromArgb(in double alpha, in double red, in double green, in double blue) =>
 		Color.FromArgb(
@@ -73,6 +73,15 @@ public static class ColorExtensions {
 
 	public static Color ChangeAlpha(this Color color, in byte alpha) =>
 		Color.FromArgb(alpha, color.R, color.G, color.B);
+
+	public static Color NextColor(this Random random, in double alpha = 1) {
+		return FromArgb(
+			alpha,
+			random.NextDouble(),
+			random.NextDouble(),
+			random.NextDouble()
+		);
+	}
 
 	// ----------------------------------- Hsb -----------------------------------
 

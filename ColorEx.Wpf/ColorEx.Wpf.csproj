@@ -14,9 +14,9 @@
 	<Company>Igor Timofeev</Company>
 	<PackageProjectUrl>https://github.com/IgorTimofeev/ColorEx</PackageProjectUrl>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
-	<AssemblyVersion>1.0.1.0</AssemblyVersion>
-	<FileVersion>1.0.1.0</FileVersion>
-	<Version>1.0.6</Version>
+	<AssemblyVersion>1.0.7.0</AssemblyVersion>
+	<FileVersion>1.0.7.0</FileVersion>
+	<Version>1.0.7</Version>
 	<Description>Provides a set of extension methods for System.Media.Color class like linear interpolation, multiplication, average calculation, RGB/HSV and Color/Uint conversion, etc.</Description>
 	<Platforms>AnyCPU;x64</Platforms>
 	<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
