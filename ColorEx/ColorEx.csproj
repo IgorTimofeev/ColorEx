@@ -11,9 +11,9 @@
     <PackageTags>color;effects;processing;rgb;hsb;conversion</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.7.1</AssemblyVersion>
-    <FileVersion>1.0.7.1</FileVersion>
-    <Version>1.0.8</Version>
+    <AssemblyVersion>1.0.7.2</AssemblyVersion>
+    <FileVersion>1.0.7.2</FileVersion>
+    <Version>1.0.9</Version>
     <Description>Highly optimized library for color channels processing, RGB/HSB models conversion and applying basic effects</Description>
     <Platforms>AnyCPU;x64</Platforms>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
